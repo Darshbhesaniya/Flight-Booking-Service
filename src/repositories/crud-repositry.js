@@ -10,6 +10,7 @@ class crudRepository {
    async create(data){
         try {
             const response = await this.model.create(data);
+            console.log("Booking data is" ,data);
             return response;
         } catch (error) {
             Logger.error("something went wrong in the crud Repo: create");
