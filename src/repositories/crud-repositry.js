@@ -65,10 +65,6 @@ class crudRepository {
                     id:id
                 }
             });
-            if(response[0] == 0){
-                 throw new AppError("Your airplane mode is not present in database",StatusCodes.NOT_FOUND)
-            }
-            console.log("crud response",response);
             return response;
         } catch (error) {
             Logger.error("something went wrong in the crud Repo: update");
