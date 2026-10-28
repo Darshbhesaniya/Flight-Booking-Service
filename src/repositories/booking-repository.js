@@ -27,21 +27,20 @@ class BookingRepository extends crudRepository {
 
     async update(id, data, transaction) {
         const response = await Booking.update(data, {
-            where: {
-                id: id
-            }
-        }, { transaction: transaction });
+            where: { id: id },
+            transaction: transaction
+        });
         return response;
     }
 
-    async cancelOldBookings(timestamp) {
-        const response = await Booking.update({ status: CANCELLED }, {
+    async getOldBookings(timestamp) {
+        const response = await Booking.findAll({
             where: {
                 [Op.and]: [
                     {
                         createdAt: {
                             [Op.lt]: timestamp
-                        }, 
+                        }
                     },
                     {
                         status: {
@@ -58,6 +57,7 @@ class BookingRepository extends crudRepository {
         });
         return response;
     }
+
 
 }
 

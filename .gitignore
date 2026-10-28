@@ -2,5 +2,4 @@ node_modules/
 .env
 combined.log
 src/config/config.json
-README.md
 Myfile.txt
